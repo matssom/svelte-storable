@@ -1,6 +1,6 @@
 {
   "name": "svelte-storable",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha",
   "description": "extending 'writable' from 'svelte/store' with localStorage",
   "main": "storable.js",
   "repository": {
@@ -9,5 +9,8 @@
   },
   "homepage": "https://github.com/matssom/amidst#readme",
   "author": "Mats Sommervold <mats@sommervold.net> (https://matssommervold.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "storable.js"
+  ]
 }

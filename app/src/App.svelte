@@ -8,7 +8,7 @@
 		<button on:click={count.increase}>Increase Count</button>
 		<button on:click={count.decrease}>Decrese Count</button>
 		<button on:click={count.reset}>Reset</button>
-		<button on:click={count.remove}>Detatch from Storage</button>
+		<button on:click={count.detatch}>Detatch from Storage</button>
 	</div>
 </main>
 

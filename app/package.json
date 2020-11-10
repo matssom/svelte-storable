@@ -17,6 +17,6 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.0",
-    "svelte-storable": "^1.0.0-alpha"
+    "svelte-storable": "^1.0.1-alpha"
   }
 }

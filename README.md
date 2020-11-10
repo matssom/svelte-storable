@@ -72,6 +72,7 @@ const unsubscribe = count.subscribe(() => doSomething());
 With `writable` you can make custom stores. This functionallity also copies over to `svelte-storable`. Again, the key difference is that you need to provide a key. You can optionally take that key as a parameter to your `createStore()` function with a default value.
 
 ```js
+// store.js
 import { storable } from 'svelte-storable';
 
 const createCountStore = (key = 'count') => {

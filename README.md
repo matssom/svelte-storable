@@ -34,7 +34,7 @@ export const count = storable('count', 0);
 
 **Using the Store**
 
-Now you can use the store with all your usual `writable` methods. Additionally, you have the `detatch()` method. This can be used to remove the data from `localStorage` so that the value will be fres on refresh.
+Now you can use the store with all your usual `writable` methods. Additionally, you have the `detatch()` method. This can be used to remove the data from `localStorage` so that the value will be fresh on refresh.
 
 :warning: **NB:** If you update the value after `detatch()` it will be stored again.
 

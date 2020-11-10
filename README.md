@@ -43,10 +43,10 @@ Now you can use the store with all your usual `writable` methods. Additionally, 
 <script>
     import { count } from './store';
 
-    const increase  = () => count.update((value) => value + 1),
-    const decrease  = () => count.update((value) => value - 1),
-	const reset     = () => count.set(0),
-    const detatch   = () => count.detatch()
+    const increase  = () => count.update((value) => value + 1);
+    const decrease  = () => count.update((value) => value - 1);
+    const reset     = () => count.set(0);
+    const detatch   = () => count.detatch();
 
 </script>
 

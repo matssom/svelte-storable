@@ -1,12 +1,14 @@
+// Author: Mats Sommervold - https://github.com/matssom/svelte-storable.git - MIT license
+
 import { writable } from 'svelte/store';
 
 class Store {
     key
     store
 
-    constructor(id, initialValue) {
-        if(typeof id === 'undefined') throw new Error('Storables require a key to interact with local storage')
-        this.key = id
+    constructor(key, initialValue) {
+        if(typeof key === 'undefined') throw new Error('Storables require a key to interact with local storage')
+        this.key = key
         this.store = this._exists() ? writable(this._getData()) : writable(initialValue)
 
         this.get = this.get.bind(this);
@@ -56,6 +58,6 @@ class Store {
     }
 }
 
-export const storable = (id, initialValue) => {
-    return new Store(id, initialValue);
+export const storable = (key, initialValue) => {
+    return new Store(key, initialValue);
 }

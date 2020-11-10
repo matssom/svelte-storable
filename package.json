@@ -1,6 +1,6 @@
 {
   "name": "svelte-storable",
-  "version": "1.0.1-alpha",
+  "version": "1.0.0",
   "description": "extending 'writable' from 'svelte/store' with localStorage",
   "main": "storable.js",
   "repository": {

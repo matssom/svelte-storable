@@ -10,6 +10,9 @@
   "homepage": "https://github.com/matssom/amidst#readme",
   "author": "Mats Sommervold <mats@sommervold.net> (https://matssommervold.com)",
   "license": "MIT",
+  "devDependencies": {
+    "svelte": "^3.0.0"
+  },
   "files": [
     "storable.js"
   ]

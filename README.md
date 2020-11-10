@@ -4,6 +4,8 @@ Svelte Storable is an extention to the `writable` store that comes with `svelte/
 
 Svelte Store adds `localStorage` management to the store while, with 1 exception preserves the api.
 
+<br>
+
 ## Installation
 
 **Include with npm:**

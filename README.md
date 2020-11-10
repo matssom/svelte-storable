@@ -78,8 +78,8 @@ const createCountStore = (key = 'count') => {
     return {
         subscribe,
         increase:   () => update((value) => value + 1),
-	    decrease:   () => update((value) => value - 1),
-	    reset:      () => set(0),
+	decrease:   () => update((value) => value - 1),
+	reset:      () => set(0),
         detatch:    () => detatch()
     }
 }

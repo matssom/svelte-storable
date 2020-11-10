@@ -1,4 +1,4 @@
-import { storable } from './storable';
+import { storable } from '../../package/storable';
 
 const createCountStore = (key = 'count') => {
     const { subscribe, set, update, detatch } = storable(key, 0);

@@ -1,53 +1,48 @@
 import { writable } from 'svelte/store';
 
-export class storable {
-    id
-    store
-  
-    constructor(id, data) {
-        if(typeof id === 'undefined') throw new Error('Storables require a key to interact')
-        this.id = id;
-        this.store = this.exists() ? writable(this.getData()) : writable(data);
-    }
-  
-    exists() {
-        return !!localStorage.getItem(this.id)
-    }
-  
-    getData() {
-        const DATA = localStorage.getItem(this.id)
-        return JSON.parse(DATA)
-    }
-  
-    setData(data) {
-        const DATA = JSON.stringify(data)
-        localStorage.setItem(this.id, DATA)
-    }
+let key, writableStore;
 
-    get() {
-        return this.store.get();
-    }
+const exists = () => !!localStorage.getItem(key);
 
-    set(data) {
-        this.setData(data);
-        this.store.set(data);
-    }
+const getData = () => {
+    const DATA = localStorage.getItem(key)
+    return JSON.parse(DATA)
+}
 
-    update(callback) {
-        const update = (data) => {
-            const newData = callback(data);
-            this.setData(newData);
-            return newData;
-        }
-        this.store.update(update);
-    }
+const setData = (data) => {
+    const DATA = JSON.stringify(data)
+    localStorage.setItem(key, DATA)
+}
 
-    subscribe (callback) {
-        return this.store.subscribe(callback);
+//store
+const store = {};
+
+store.get = () => writableStore.get();
+
+store.set = (data) => {
+    setData(data);
+    writableStore.set(data);
+}
+
+store.update = (callback) => {
+    const update = (data) => {
+        const newData = callback(data);
+        setData(newData);
+        return newData;
     }
-  
-    remove() {
-        localStorage.removeItem(this.id)
-        return true
-    }  
+    writableStore.update(update);
+}
+
+store.subscribe = (callback) => writableStore.subscribe(callback);
+
+store.remove = () => {
+    localStorage.removeItem(key)
+    return true
+}
+
+export const storable = (id, initialValue) => {
+    if(typeof id === 'undefined') throw new Error('Storables require a key to interact')
+    key = id;
+    writableStore = exists() ? writable(getData()) : writable(initialValue);
+    return store;
 }

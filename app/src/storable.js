@@ -1,48 +1,61 @@
 import { writable } from 'svelte/store';
 
-let key, writableStore;
+class Store {
+    key
+    store
 
-const exists = () => !!localStorage.getItem(key);
+    constructor(id, initialValue) {
+        if(typeof id === 'undefined') throw new Error('Storables require a key to interact with local storage')
+        this.key = id
+        this.store = this._exists() ? writable(this._getData()) : writable(initialValue)
 
-const getData = () => {
-    const DATA = localStorage.getItem(key)
-    return JSON.parse(DATA)
-}
-
-const setData = (data) => {
-    const DATA = JSON.stringify(data)
-    localStorage.setItem(key, DATA)
-}
-
-//store
-const store = {};
-
-store.get = () => writableStore.get();
-
-store.set = (data) => {
-    setData(data);
-    writableStore.set(data);
-}
-
-store.update = (callback) => {
-    const update = (data) => {
-        const newData = callback(data);
-        setData(newData);
-        return newData;
+        this.get = this.get.bind(this);
+        this.set = this.set.bind(this);
+        this.update = this.update.bind(this);
+        this.subscribe = this.subscribe.bind(this);
+        this.detatch = this.detatch.bind(this);
     }
-    writableStore.update(update);
-}
 
-store.subscribe = (callback) => writableStore.subscribe(callback);
+    _exists () { return !!localStorage.getItem(this.key) }
 
-store.remove = () => {
-    localStorage.removeItem(key)
-    return true
+    _getData() {
+        const DATA = localStorage.getItem(this.key)
+        return JSON.parse(DATA)
+    }
+
+    _setData(data) {
+        const DATA = JSON.stringify(data)
+        localStorage.setItem(this.key, DATA)
+    }
+
+    get() {
+        this.store.get()
+    }
+
+    set(data) {
+        this._setData(data)
+        this.store.set(data)
+    }
+
+    update(callback) {
+        const update = (data) => {
+            const newData = callback(data)
+            this._setData(newData)
+            return newData
+        }
+        this.store.update(update);
+    }
+
+    subscribe(callback) {
+        return this.store.subscribe(callback)
+    }
+
+    detatch() {
+        localStorage.removeItem(this.key)
+        return true
+    }
 }
 
 export const storable = (id, initialValue) => {
-    if(typeof id === 'undefined') throw new Error('Storables require a key to interact')
-    key = id;
-    writableStore = exists() ? writable(getData()) : writable(initialValue);
-    return store;
+    return new Store(id, initialValue);
 }

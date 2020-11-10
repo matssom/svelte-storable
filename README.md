@@ -21,6 +21,8 @@ Download `storable.js` from this repository and include it in your project.
 
 ## Documentation
 
+Use the [svelte writalbe](https://svelte.dev/docs#writable) doumentation as a companion to this documentation if you aren't comfortable with svelte stores.
+
 **Creating a Store**
 
 'The api for `svelte-storable` matches almost identically to the `writable` from `svelte/store`. The key difference is that you need to provide a key to the `storable`. This key will be used when storing and retrieving the persisted data.

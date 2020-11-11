@@ -10,7 +10,7 @@ Svelte Store adds `localStorage` management to the store while, with 1 exception
 
 **Include with npm:**
 ```
-npm install 'svelte-storable';
+npm install svelte-storable
 ```
 
 **Include locally:**

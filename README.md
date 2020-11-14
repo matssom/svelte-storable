@@ -15,7 +15,7 @@ npm install svelte-storable
 
 **Include locally:**
 
-Download `storable.js` from this repository and include it in your project.
+Download `storable.js` from [this](https://github.com/matssom/svelte-storable/) repository and include it in your project.
 
 <br>
 
@@ -25,7 +25,7 @@ Use the [svelte writalbe](https://svelte.dev/docs#writable) doumentation as a co
 
 **Creating a Store**
 
-'The api for `svelte-storable` matches almost identically to the `writable` from `svelte/store`. The key difference is that you need to provide a key to the `storable`. This key will be used when storing and retrieving the persisted data.
+The api for `svelte-storable` matches almost identically to the `writable` from `svelte/store`. The key difference is that you need to provide a key to the `storable`. This key will be used when storing and retrieving the persisted data.
 
 ```js
 // store.js
@@ -62,11 +62,11 @@ Now you can use the store with all your usual `writable` methods. Additionally, 
 
 ```
 
-**Manual Subscribe**
+**Subscribe**
 
-You can also use the subscribe unsubscribe/subscribe manually in addition to using the `$count` syntax.
+You can use the `$` syntax like any other svelte store or do it manually with unsubscribe/subscribe.
 ```js
-const unsubscribe = count.subscribe(() => doSomething());
+const unsubscribe = count.subscribe(value => doSomething(value));
 ```
 
 **Custom Stores**
@@ -89,7 +89,7 @@ const createCountStore = (key = 'count') => {
     }
 }
 
-export const count = createCountStore();
+export const count = createCountStore('count');
 ```
 
 :warning: **NB:** Remember to provide different keys to all the different instances of your custom store. If two or more stores have the same key, they will update each other.

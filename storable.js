@@ -11,7 +11,6 @@ class Store {
         this.key = key
         this.store = this._exists() ? writable(this._getData()) : writable(initialValue)
 
-        this.get = this.get.bind(this);
         this.set = this.set.bind(this);
         this.update = this.update.bind(this);
         this.subscribe = this.subscribe.bind(this);

@@ -7,6 +7,13 @@
     "type": "git",
     "url": "git+https://github.com/matssom/svelte-storable.git"
   },
+  "keywords": [
+    "svelte",
+    "storable",
+    "store",
+    "localStorage",
+    "writable"
+  ],
   "homepage": "https://github.com/matssom/amidst#readme",
   "author": "Mats Sommervold <mats@sommervold.net> (https://matssommervold.com)",
   "license": "MIT",

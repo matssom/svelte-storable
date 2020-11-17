@@ -30,10 +30,6 @@ class Store {
         localStorage.setItem(this.key, DATA)
     }
 
-    get() {
-        this.store.get()
-    }
-
     set(data) {
         this._setData(data)
         this.store.set(data)
